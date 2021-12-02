@@ -50,7 +50,7 @@ class Submarine:
         elif direction == "Up":
             self.aim -= distance
         else:
-            raise ValueError("f{direction} is not a valid movement direction.")
+            raise ValueError(f"{direction} is not a valid movement direction.")
 
 class FormatError(Exception):
     pass
