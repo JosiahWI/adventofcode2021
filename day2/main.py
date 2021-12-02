@@ -75,4 +75,4 @@ if __name__ == "__main__":
     for direction, distance in moves:
         sub2.move_with_aim(direction, int(distance))
     print(f"Part 2: {sub2.x * sub2.y}")
-        
+
