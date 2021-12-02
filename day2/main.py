@@ -38,7 +38,7 @@ class Submarine:
         :param direction: Direction to move the submarine. Possible values are:
                 "Forward" move the submarine along its slope.
                 "Down" tilt the submarine towards the increasing y axis.
-                "Up" tilt the submarine towards the increasing x axis.
+                "Up" tilt the submarine towards the decreasing y axis.
 
         :param distance: Distance to move along the slope.
         """
