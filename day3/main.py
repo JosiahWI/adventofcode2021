@@ -20,27 +20,24 @@ class Diagnostic:
         for bits in self._bit_graph:
             yield bits[col_index]
 
-    def most_common_bit(self, col_index, on_tie=None):
+    def compare_bit(self, key, col_index, on_tie=None):
         frequency_map = dict(Counter(self.col_iter(col_index)).most_common())
         bin_zeros = frequency_map.get('0', 0)
         bin_ones = frequency_map.get('1', 0)
         if bin_zeros == bin_ones:
             return on_tie
         else:
-            return max(frequency_map, key=lambda x: frequency_map.get(x, 0))
+            return key(frequency_map, key=lambda x: frequency_map.get(x, 0))
+    
+    def most_common_bit(self, col_index, on_tie=None):
+        return self.compare_bit(max, col_index, on_tie)
 
     def most_common_bits(self, on_tie=None):
         for i in range(len(self._bit_graph[0])):
             yield self.most_common_bit(i, on_tie)
 
     def least_common_bit(self, col_index, on_tie=None):
-        frequency_map = dict(Counter(self.col_iter(col_index)).most_common())
-        bin_zeros = frequency_map.get('0', 0)
-        bin_ones = frequency_map.get('1', 0)
-        if bin_zeros == bin_ones:
-            return on_tie
-        else:
-            return min(frequency_map, key=lambda x: frequency_map.get(x, 0))
+        return self.compare_bit(min, col_index, on_tie)
 
     def least_common_bits(self, on_tie=None):
         for i in range(len(self._bit_graph[0])):
