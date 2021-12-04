@@ -18,9 +18,9 @@ class Board:
 
     def is_solved(self):
         # thank you to Casca on Discord for the idea of marking by replacement
-        if any([all([x == -1 for x in row]) for row in self._grid]):
+        if any(all(x == -1 for x in row) for row in self._grid):
             return True
-        if any([all([x == -1 for x in col]) for col in self._grid.transpose()]):
+        if any(all(x == -1 for x in col) for col in self._grid.transpose()):
             return True
         return False
 
