@@ -60,6 +60,8 @@ class CaveGraph:
         
         Small caves (lowercase letters) must all be traversed at most once.
         
+        :param extra_visit: If True, allows visiting one small cave twice.
+        
         :return: An iterable of the paths in the format e.g. "start,a,B,end"
         """
         in_progress: List[List[str]] = [["start"]]
