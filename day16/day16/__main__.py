@@ -42,7 +42,7 @@ while len(stack) > 0:
             if len(operands) < 2:
                 raise RuntimeError("Wrong number of operands on stack.")
             operands.append(1 if operands.pop(-1) == operands.pop(-1) else 0)
-    print(f"{packet} -> {operands}")
+    #print(f"{packet} -> {operands}")
 
 if len(operands) > 1:
     raise RuntimeError("Too many operands left over!!")
