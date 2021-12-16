@@ -32,12 +32,9 @@ class OpStack:
             if val is None:
                 raise RuntimeError("Bad stream data.")
             bits = bin(val)[2:].zfill(5)
-            print(bits)
             res = res + bits[1:]
             if bits[0] == "0":
                 break
-        print(res)
-        print(int(res, 2))
         return int(res, 2)
 
     def _decode_packet(self) -> Optional[Packet]:
