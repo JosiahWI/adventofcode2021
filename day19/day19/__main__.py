@@ -5,7 +5,7 @@ import sys
 
 import pygame
 
-pygame.init
+pygame.init()
 X_SIZE, Y_SIZE = SCREEN_SIZE = (1000, 1000)
 screen = pygame.display.set_mode(SCREEN_SIZE)
 
