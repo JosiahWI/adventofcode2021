@@ -44,13 +44,13 @@ def distance_pairs(beacons1, beacons2):
     return matches
 
 scanners = []
-deltas = []
+deltas = [[0, 0, 0]]
 for line in sys.stdin:
     if "scanner" in line:
         continue
     elif line == "\n":
         scanners.append(deltas)
-        deltas = []
+        deltas = [[0, 0, 0]]
     else:
         deltas.append([int(n) for n in line.split(",")])
 
@@ -168,10 +168,12 @@ for beacons in scanners:
     for beacon in beacons:
         unique.add(tuple(beacon))
 
-print(f"Part 1: {len(unique)}")
+# the scanner positions are in the beacons, so we need to subtract them
+print(f"Part 1: {len(unique) - len(scanners)}")
 
 def manhattan(a, b):
     return sum(abs(a[i] - b[i]) for i in range(3))
 
-print("Part 2:")
-print(f"{max(manhattan(a, b) for a, b in itertools.combinations(unique, 2))}")
+scanners = (beacons[0] for beacons in scanners)
+print("Part 2: " \
+    f"{max(manhattan(a, b) for a, b in itertools.combinations(scanners, 2))}")
